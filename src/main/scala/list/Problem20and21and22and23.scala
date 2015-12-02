@@ -74,14 +74,17 @@ object Problem20and21and22and23 {
     Hint: Use the solution to problem P20
    */
   def randomSelect[A](num: Int, ls: List[A]): List[A] = {
-    if(num < 0) throw new IllegalArgumentException
-    def randomSelectRec(curNum: Int, ls: List[A], acc: List[A], rand: Random): List[A] = {
+    if (num < 0) throw new IllegalArgumentException
+    val rand = new Random()
+    @tailrec
+    def randomSelectRec(curNum: Int, ls: List[A], acc: List[A]): List[A] = {
       if (curNum == 0) acc
       else {
         val (listMinusElem, elem) = removeAt(rand.nextInt(ls.length), ls)
-        randomSelectRec(curNum - 1, listMinusElem, elem :: acc, rand)
+        randomSelectRec(curNum - 1, listMinusElem, elem :: acc)
       }
     }
-    randomSelectRec(num, ls, List(), new Random())
+    randomSelectRec(num, ls, List())
   }
+
 }

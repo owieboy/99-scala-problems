@@ -58,4 +58,5 @@ class Problem20And21And22And23Test extends FlatSpec with PropertyChecks with Mat
       elem => origList should contain(elem)
     }
   }
+
 }
